@@ -1,0 +1,112 @@
+{
+  "edition": "11th Edition",
+  "factions": {
+    "Space Marines": [
+      {"name":"Stormlance Task Force","force":"Disruption","dp":3,"rule":"Lightning Assault","stratagems":[],"restrictions":[]},
+      {"name":"Gladius Strike Force","force":"Priority Assets","dp":3,"rule":"Combat Doctrines","stratagems":[],"restrictions":[]},
+      {"name":"Armoured Speartip","force":"Take and Hold","dp":3,"rule":"Rapid Deployment","stratagems":[],"restrictions":[]},
+      {"name":"Ceramite Sentinels","force":"Take and Hold","dp":3,"rule":"Adaptive Defence","stratagems":[],"restrictions":[]},
+      {"name":"Firestorm Assault Force","force":"Priority Assets","dp":2,"rule":"Close-range Eradication","stratagems":[],"restrictions":[]},
+      {"name":"Headhunter Task Force","force":"Priority Assets","dp":2,"rule":"Target Sighted","stratagems":[],"restrictions":[]},
+      {"name":"1st Company Task Force","force":"Purge the Foe","dp":2,"rule":"Extremis-level Threat","stratagems":[],"restrictions":[]},
+      {"name":"Vanguard Spearhead","force":"Reconnaissance","dp":2,"rule":"Shadow Masters","stratagems":[],"restrictions":[]},
+      {"name":"Anvil Siege Force","force":"Take and Hold","dp":2,"rule":"Shield of the Imperium","stratagems":[],"restrictions":[]},
+      {"name":"Bastion Task Force","force":"Take and Hold","dp":2,"rule":"Interlocking Tactics","stratagems":[],"restrictions":[]},
+      {"name":"Ironstorm Spearhead","force":"Take and Hold","dp":2,"rule":"Armoured Wrath","stratagems":[],"restrictions":[]},
+      {"name":"Orbital Assault Force","force":"Take and Hold","dp":2,"rule":"Rapid-drop Deployment","stratagems":[],"restrictions":[]},
+      {"name":"Subversion Assets","force":"Disruption","dp":1,"rule":"Subversion","stratagems":[],"restrictions":[]},
+      {"name":"Fulguris Task Force","force":"Reconnaissance","dp":1,"rule":"Skystrike","stratagems":[],"restrictions":[]},
+      {"name":"Librarius Conclave","force":"Reconnaissance","dp":1,"rule":"Psychic Mastery","stratagems":[],"restrictions":[]},
+      {"name":"Vengeful Hosts","force":"Take and Hold","dp":1,"rule":"Imperator Unleashed","stratagems":[],"restrictions":[]}
+    ],
+    "Aeldari": [
+      {"name":"Warhost","force":"Take and Hold","dp":3,"rule":"Martial Grace","stratagems":[],"restrictions":[]},
+      {"name":"Windrider Host","force":"Disruption","dp":2,"rule":"Ride the Wind","stratagems":[],"restrictions":[]},
+      {"name":"Spirit Conclave","force":"Priority Assets","dp":2,"rule":"Shepherds of the Dead","stratagems":[],"restrictions":[]},
+      {"name":"Guardian Battlehost","force":"Take and Hold","dp":2,"rule":"Defend at All Costs","stratagems":[],"restrictions":[]},
+      {"name":"Ghosts of the Webway","force":"Reconnaissance","dp":2,"rule":"Acrobatic Onslaught","stratagems":[],"restrictions":[]},
+      {"name":"Devoted of Ynnead","force":"Purge the Foe","dp":2,"rule":"Strength from Death","stratagems":[],"restrictions":[]},
+      {"name":"Seer Council","force":"Priority Assets","dp":2,"rule":"Strands of Fate","stratagems":[],"restrictions":[]},
+      {"name":"Aspect Host","force":"Purge the Foe","dp":2,"rule":"Path of the Warrior","stratagems":[],"restrictions":[]},
+      {"name":"Armoured Warhost","force":"Take and Hold","dp":2,"rule":"Skilled Crews","stratagems":[],"restrictions":[]},
+      {"name":"Fateful Performance","force":"Reconnaissance","dp":1,"rule":"Acrobatic Onslaught","stratagems":[],"restrictions":[]},
+      {"name":"Path of the Outcast","force":"Disruption","dp":1,"rule":"Far-Reaching Doom","stratagems":[],"restrictions":[]}
+    ],
+    "Drukhari": [
+      {"name":"Realspace Raiders","force":"Priority Assets","dp":2,"rule":"Alliance of Agony","stratagems":[],"restrictions":[]},
+      {"name":"Skysplinter Assault","force":"Disruption","dp":2,"rule":"Rain Of Cruelty","stratagems":[],"restrictions":[]},
+      {"name":"Spectacle of Spite","force":"Purge the Foe","dp":2,"rule":"Combat Drugs","stratagems":[],"restrictions":[]},
+      {"name":"Covenite Coterie","force":"Take and Hold","dp":2,"rule":"Stitchflesh Abominations","stratagems":[],"restrictions":[]},
+      {"name":"Kabalite Cartel","force":"Priority Assets","dp":2,"rule":"Murderous Agenda","stratagems":[],"restrictions":[]},
+      {"name":"Reaper’s Wager","force":"Purge the Foe","dp":1,"rule":"Callous Competition","stratagems":[],"restrictions":[]},
+      {"name":"Exhibition of Slaughter","force":"Purge the Foe","dp":1,"rule":"Exacting Cruelty","stratagems":[],"restrictions":[]},
+      {"name":"Kabalite Agonysts","force":"Priority Assets","dp":1,"rule":"Contracted Harvest","stratagems":[],"restrictions":[]}
+    ],
+    "Genestealer Cults": [
+      {"name":"Host of Ascension","force":"Purge the Foe","dp":2,"rule":"A Perfect Ambush","stratagems":[],"restrictions":[]},
+      {"name":"Xenocreed Congregation","force":"Take and Hold","dp":2,"rule":"Unquestioning Fanaticism","stratagems":[],"restrictions":[]},
+      {"name":"Biosanctic Broodsurge","force":"Priority Assets","dp":2,"rule":"Hypermorphic Fury","stratagems":[],"restrictions":[]},
+      {"name":"Outlander Claw","force":"Disruption","dp":2,"rule":"Rapid Takeover","stratagems":[],"restrictions":[]},
+      {"name":"Brood Brother Auxilia","force":"Priority Assets","dp":2,"rule":"Integrated Tactics","stratagems":[],"restrictions":[]},
+      {"name":"Final Day","force":"Purge the Foe","dp":1,"rule":"Psionic Parasitism","stratagems":[],"restrictions":[]},
+      {"name":"Heroes of the Uprising","force":"Take and Hold","dp":1,"rule":"Killer Reputation","stratagems":[],"restrictions":[]},
+      {"name":"Purestrain Broodswarm","force":"Disruption","dp":1,"rule":"Enemy Within","stratagems":[],"restrictions":["PURESTRAIN tag; cannot be taken with another PURESTRAIN detachment"]},
+      {"name":"Xenocult Masses","force":"Take and Hold","dp":1,"rule":"Hordes of the Faithful","stratagems":[],"restrictions":[]}
+    ],
+    "Leagues of Votann": [
+      {"name":"Needgaârd Oathband","force":"Take and Hold","dp":2,"rule":"Martial Leverage","stratagems":[],"restrictions":[]},
+      {"name":"Persecution Prospect","force":"Disruption","dp":2,"rule":"Assailed From Every Angle","stratagems":[],"restrictions":[]},
+      {"name":"Dêlve Assault Shift","force":"Purge the Foe","dp":2,"rule":"Fury From The Dêlve","stratagems":[],"restrictions":[]},
+      {"name":"Brandfast Oathband","force":"Reconnaissance","dp":2,"rule":"Mobile Sensor Relays","stratagems":[],"restrictions":[]},
+      {"name":"Hearthfyre Arsenal","force":"Priority Assets","dp":2,"rule":"Optimal Application","stratagems":[],"restrictions":[]},
+      {"name":"Hearthband","force":"Take and Hold","dp":2,"rule":"Methodical Annihilation","stratagems":[],"restrictions":[]},
+      {"name":"Mercenary Oathband","force":"Purge the Foe","dp":1,"rule":"Ruthless Reinvestment","stratagems":[],"restrictions":[]},
+      {"name":"Armoured Trailblazers","force":"Reconnaissance","dp":1,"rule":"Sagitaur Spearhead","stratagems":[],"restrictions":[]},
+      {"name":"Farseekers","force":"Reconnaissance","dp":1,"rule":"Eye of the Hunt","stratagems":[],"restrictions":[]},
+      {"name":"Hearthguard Covenant","force":"Take and Hold","dp":1,"rule":"Avatars of the Ancestors","stratagems":[],"restrictions":[]}
+    ],
+    "Necrons": [
+      {"name":"Awakened Dynasty","force":"Priority Assets","dp":2,"rule":"Command Protocols","stratagems":[],"restrictions":[]},
+      {"name":"Annihilation Legion","force":"Purge the Foe","dp":2,"rule":"Annihilation Protocol","stratagems":[],"restrictions":[]},
+      {"name":"Canoptek Court","force":"Priority Assets","dp":2,"rule":"Power Matrix","stratagems":[],"restrictions":[]},
+      {"name":"Obeisance Phalanx","force":"Take and Hold","dp":2,"rule":"Worthy Foes","stratagems":[],"restrictions":[]},
+      {"name":"Hypercrypt Legion","force":"Disruption","dp":2,"rule":"Hyperphasing","stratagems":[],"restrictions":[]},
+      {"name":"Starshatter Arsenal","force":"Priority Assets","dp":2,"rule":"Relentless Onslaught","stratagems":[],"restrictions":[]},
+      {"name":"Cryptek Conclave","force":"Reconnaissance","dp":2,"rule":"Technosorcerous Augmentations","stratagems":[],"restrictions":[]},
+      {"name":"Cursed Legion","force":"Purge the Foe","dp":1,"rule":"Cold Fervour","stratagems":[],"restrictions":[]},
+      {"name":"Pantheon of Woe","force":"Disruption","dp":1,"rule":"Cosmic Distortion","stratagems":[],"restrictions":[]},
+      {"name":"Hand of the Dynasty","force":"Reconnaissance","dp":1,"rule":"Hypermotility Protocols","stratagems":[],"restrictions":[]},
+      {"name":"Skyshroud Spearhead","force":"Take and Hold","dp":1,"rule":"Armoured Advance","stratagems":[],"restrictions":[]}
+    ],
+    "Orks": [
+      {"name":"War Horde","force":"Purge the Foe","dp":2,"rule":"Get Stuck In","stratagems":[],"restrictions":[]},
+      {"name":"Da Big Hunt","force":"Priority Assets","dp":2,"rule":"Da Hunt Is On","stratagems":[],"restrictions":[]},
+      {"name":"Kult of Speed","force":"Disruption","dp":2,"rule":"Adrenaline Junkies","stratagems":[],"restrictions":[]},
+      {"name":"Dread Mob","force":"Take and Hold","dp":2,"rule":"Try Dat Button!","stratagems":[],"restrictions":[]},
+      {"name":"Green Tide","force":"Take and Hold","dp":2,"rule":"Mob Mentality","stratagems":[],"restrictions":[]},
+      {"name":"Bully Boyz","force":"Purge the Foe","dp":2,"rule":"Da Boss Is Watchin’","stratagems":[],"restrictions":[]},
+      {"name":"Freebooter Krew","force":"Priority Assets","dp":1,"rule":"Here Be Loot","stratagems":[],"restrictions":[]},
+      {"name":"Speedwaaagh!","force":"Disruption","dp":1,"rule":"Turbo Boostas","stratagems":[],"restrictions":[]},
+      {"name":"Blitz Brigade","force":"Take and Hold","dp":1,"rule":"Eager for the Fight","stratagems":[],"restrictions":[]}
+    ],
+    "T’au Empire": [
+      {"name":"Kauyon","force":"Take and Hold","dp":2,"rule":"Patient Hunter","stratagems":["A Tempting Trap — 1CP","Point-Blank Ambush — 1CP","Coordinate to Engage — 1CP","Combat Embarkation — 1CP","Photon Grenades — 1CP"],"restrictions":["Kauyon stratagems have battle-round restrictions where specified"]},
+      {"name":"Mont’ka","force":"Purge the Foe","dp":2,"rule":"Killing Blow","stratagems":[],"restrictions":[]},
+      {"name":"Retaliation Cadre","force":"Priority Assets","dp":2,"rule":"Bonded Heroes","stratagems":[],"restrictions":[]},
+      {"name":"Kroot Hunting Pack","force":"Disruption","dp":2,"rule":"Hunter’s Instincts","stratagems":[],"restrictions":[]},
+      {"name":"Advanced Acquisition Cadre","force":"Reconnaissance","dp":1,"rule":"Expert Fieldcraft","stratagems":["Selected detachment stratagems shown in the dossier"],"restrictions":[]},
+      {"name":"Auxiliary Cadre","force":"Priority Assets","dp":1,"rule":"Integrated Command Structure","stratagems":["Experimental Modifications — 1CP"],"restrictions":[]},
+      {"name":"Experimental Prototype Cadre","force":"Purge the Foe","dp":1,"rule":"Superior Craftsmanship","stratagems":[],"restrictions":[]}
+    ],
+    "Tyranids": [
+      {"name":"Invasion Fleet","force":"Take and Hold","dp":2,"rule":"Hyper-adaptations","stratagems":[],"restrictions":[]},
+      {"name":"Crusher Stampede","force":"Purge the Foe","dp":2,"rule":"Enraged Behemoths","stratagems":[],"restrictions":[]},
+      {"name":"Unending Swarm","force":"Take and Hold","dp":2,"rule":"Insurmountable Odds","stratagems":[],"restrictions":[]},
+      {"name":"Assimilation Swarm","force":"Priority Assets","dp":2,"rule":"Feed the Swarm","stratagems":[],"restrictions":[]},
+      {"name":"Vanguard Onslaught","force":"Reconnaissance","dp":2,"rule":"Questing Tendrils","stratagems":[],"restrictions":[]},
+      {"name":"Synaptic Nexus","force":"Priority Assets","dp":2,"rule":"Synaptic Imperatives","stratagems":[],"restrictions":[]},
+      {"name":"Subterranean Assault","force":"Disruption","dp":1,"rule":"Surprise Assault","stratagems":[],"restrictions":[]},
+      {"name":"Ambush Predators","force":"Reconnaissance","dp":1,"rule":"Mindhunger","stratagems":[],"restrictions":[]}
+    ]
+  }
+}
