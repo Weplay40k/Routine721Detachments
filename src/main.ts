@@ -1,73 +1,18 @@
 import './styles.css';
 
-type Stratagem = string | { name: string; cp?: number };
-type Enhancement = string | { name: string; points?: number };
-type Detachment = {
-  name: string;
-  force: string;
-  dp: number;
-  rule: string;
-  enhancements?: Enhancement[];
-  stratagems: Stratagem[];
-  restrictions: string[];
-};
-type RulesData = { edition: string; factions: Record<string, Detachment[]> };
+type Stratagem = string | { name: string; cp?: number; type?: string; phases?: string[]; turn?: string };
+type Enhancement = string | { name: string; points?: number; keywords?: string[] };
+type Detachment = { name:string; force:string; dp:number; rule:string; enhancements?:Enhancement[]; stratagems:Stratagem[]; restrictions:string[] };
+type RulesData = { edition:string; factions:Record<string,Detachment[]> };
 
-const factions = [
-  'Space Marines','Black Templars','Blood Angels','Dark Angels','Deathwatch','Imperial Fists','Iron Hands','Raven Guard','Salamanders','Space Wolves','Ultramarines','White Scars','Astra Militarum','Adepta Sororitas','Adeptus Mechanicus','Adeptus Custodes','Grey Knights','Imperial Knights','Imperial Agents','Chaos Space Marines','Death Guard','Thousand Sons','World Eaters','Chaos Daemons','Chaos Knights',"Emperor's Children",'Aeldari','Drukhari','Genestealer Cults','Leagues of Votann','Necrons','Orks',"T'au Empire",'Tyranids'
-];
-
-let data: RulesData = { edition: '11th Edition', factions: {} };
-let selectedFaction = factions[0];
-let selectedDetachment = '';
-const app = document.querySelector('#app')!;
-const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]!));
-
-async function boot() {
-  try {
-    const response = await fetch('./rules-data.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    data = await response.json();
-  } catch (error) {
-    console.error(error);
-  }
-  render();
-}
-
-function render() {
-  const detachments = data.factions[selectedFaction] ?? [];
-  if (selectedDetachment && !detachments.some(d => d.name === selectedDetachment)) selectedDetachment = '';
-  const active = detachments.find(d => d.name === selectedDetachment);
-
-  app.innerHTML = `<div class="page">
-    <header><div class="sigil">☠</div><div><small>ROUTINE 721</small><h1>DETACHMENT ARCHIVE</h1><p>WARHAMMER 40,000 · ${esc(data.edition)}</p></div></header>
-    <main>
-      <aside><h2>ALL FACTIONS</h2>${factions.map(f => `<button class="f ${f===selectedFaction?'on':''}" data-f="${esc(f)}">${esc(f)}${data.factions[f]?.length ? `<span>${data.factions[f].length}</span>` : ''}</button>`).join('')}</aside>
-      <section>
-        <div class="hero"><small>FACTION DOSSIER</small><h2>${esc(selectedFaction)}</h2><p>${detachments.length ? `${detachments.length} detachments in the local registry` : 'Detachment records are being added to the local registry.'}</p></div>
-        ${active ? dossier(active) : detachments.length ? `<div class="det-list">${detachments.map(d => `<button class="det-card" data-d="${esc(d.name)}"><div><small>${esc(d.force)}</small><h3>${esc(d.name)}</h3></div><b>${d.dp} DP</b></button>`).join('')}</div>` : `<div class="empty"><strong>DETACHMENTS</strong><p>No detachment records are stored for this faction yet. The site has no external data dependency.</p></div>`}
-      </section>
-    </main>
-  </div>`;
-
-  document.querySelectorAll<HTMLButtonElement>('[data-f]').forEach(b => b.onclick = () => { selectedFaction = b.dataset.f!; selectedDetachment = ''; render(); });
-  document.querySelectorAll<HTMLButtonElement>('[data-d]').forEach(b => b.onclick = () => { selectedDetachment = b.dataset.d!; render(); });
-}
-
-function dossier(d: Detachment) {
-  const enhancements = d.enhancements ?? [];
-  return `<div class="back"><button data-back="1">← All detachments</button></div>
-    <article><div class="top"><div><small>${esc(d.force)}</small><h3>${esc(d.name)}</h3></div><b>${d.dp} DP</b></div>
-      <div class="grid">
-        <div><h4>FORCE DISPOSITION</h4><p>${esc(d.force)}</p></div>
-        <div><h4>DP</h4><p>${d.dp} Detachment Points</p></div>
-        <div class="wide"><h4>DETACHMENT RULE</h4><p>${esc(d.rule)}</p></div>
-        <div><h4>ENHANCEMENTS + POINT COSTS</h4>${enhancements.length ? `<ul>${enhancements.map(x => `<li>${esc(typeof x === 'string' ? x : `${x.name}${x.points != null ? ` — ${x.points} pts` : ''}`)}</li>`).join('')}</ul>` : '<p class="muted">Enhancement registry pending for this detachment.</p>'}</div>
-        <div><h4>STRATAGEMS + CP COSTS</h4>${d.stratagems.length ? `<ul>${d.stratagems.map(s => `<li>${esc(typeof s === 'string' ? s : `${s.name}${s.cp != null ? ` — ${s.cp}CP` : ''}`)}</li>`).join('')}</ul>` : '<p class="muted">Stratagem registry pending for this detachment.</p>'}</div>
-        <div class="wide"><h4>ARMY RESTRICTIONS / KEYWORDS</h4>${d.restrictions.length ? `<ul>${d.restrictions.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="muted">No additional restriction recorded.</p>'}</div>
-      </div>
-    </article>`;
-}
-
-app.addEventListener('click', e => { const target = e.target as HTMLElement; if (target.closest('[data-back]')) { selectedDetachment = ''; render(); } });
-boot();
+const factions = ['Space Marines','Black Templars','Blood Angels','Dark Angels','Deathwatch','Imperial Fists','Iron Hands','Raven Guard','Salamanders','Space Wolves','Ultramarines','White Scars','Astra Militarum','Adepta Sororitas','Adeptus Mechanicus','Adeptus Custodes','Grey Knights','Imperial Knights','Imperial Agents','Chaos Space Marines','Death Guard','Thousand Sons','World Eaters','Chaos Daemons','Chaos Knights',"Emperor's Children",'Aeldari','Drukhari','Genestealer Cults','Leagues of Votann','Necrons','Orks',"T'au Empire",'Tyranids'];
+let data:RulesData={edition:'11th Edition',factions:{}}; let selectedFaction=factions[0]; let selectedDetachment='';
+const app=document.querySelector('#app')!;
+const esc=(s:string)=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]!));
+const label=(s:string)=>s.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+async function boot(){try{const r=await fetch('./rules-data.json',{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);data=await r.json()}catch(e){console.error(e)}render()}
+function render(){const ds=data.factions[selectedFaction]??[];if(selectedDetachment&&!ds.some(d=>d.name===selectedDetachment))selectedDetachment='';const active=ds.find(d=>d.name===selectedDetachment);
+app.innerHTML=`<div class="page"><header><div class="sigil">☠</div><div><small>ROUTINE 721</small><h1>DETACHMENT ARCHIVE</h1><p>WARHAMMER 40,000 · ${esc(data.edition)}</p></div></header><main><aside><h2>ALL FACTIONS</h2>${factions.map(f=>`<button class="f ${f===selectedFaction?'on':''}" data-f="${esc(f)}">${esc(f)}${data.factions[f]?.length?`<span>${data.factions[f].length}</span>`:''}</button>`).join('')}</aside><section><div class="hero"><small>FACTION DOSSIER</small><h2>${esc(selectedFaction)}</h2><p>${ds.length?`${ds.length} detachments · local structured registry`:'No detachment records available.'}</p></div>${active?dossier(active):ds.length?`<div class="det-list">${ds.map(d=>`<button class="det-card" data-d="${esc(d.name)}"><div><small>${esc(d.force)}</small><h3>${esc(d.name)}</h3><p>${d.enhancements?.length??0} Enhancements · ${d.stratagems.length} Stratagems</p></div><b>${d.dp} DP</b></button>`).join('')}</div>`:`<div class="empty"><strong>DETACHMENTS</strong><p>No detachment records are stored for this faction.</p></div>`}</section></main></div>`;
+document.querySelectorAll<HTMLButtonElement>('[data-f]').forEach(b=>b.onclick=()=>{selectedFaction=b.dataset.f!;selectedDetachment='';render()});document.querySelectorAll<HTMLButtonElement>('[data-d]').forEach(b=>b.onclick=()=>{selectedDetachment=b.dataset.d!;render()})}
+function dossier(d:Detachment){const enh=d.enhancements??[];return `<div class="back"><button data-back="1">← All detachments</button></div><article><div class="top"><div><small>${esc(d.force)}</small><h3>${esc(d.name)}</h3></div><b>${d.dp} DP</b></div><div class="grid"><div><h4>FORCE DISPOSITION</h4><p>${esc(d.force)}</p></div><div><h4>DP</h4><p>${d.dp} Detachment Points</p></div><div class="wide"><h4>DETACHMENT RULE</h4><p>${esc(d.rule)}</p></div><div><h4>ENHANCEMENTS + POINT COSTS</h4>${enh.length?`<div class="cards">${enh.map(x=>typeof x==='string'?`<div class="mini"><strong>${esc(x)}</strong></div>`:`<div class="mini"><strong>${esc(x.name)}</strong><b>${x.points??'—'} pts</b>${x.keywords?.length?`<small>${esc(x.keywords.join(' · '))}</small>`:''}</div>`).join('')}</div>`:'<p class="muted">No enhancement records were returned.</p>'}</div><div><h4>STRATAGEMS + CP COSTS</h4>${d.stratagems.length?`<div class="cards">${d.stratagems.map(s=>typeof s==='string'?`<div class="mini"><strong>${esc(s)}</strong></div>`:`<div class="mini"><strong>${esc(s.name)}</strong><b>${s.cp??'—'} CP</b>${s.type||s.phases?.length?`<small>${esc([s.type&&label(s.type),s.phases?.length&&s.phases.map(label).join(' / '),s.turn&&label(s.turn)].filter(Boolean).join(' · '))}</small>`:''}</div>`).join('')}</div>`:'<p class="muted">No stratagem records were returned.</p>'}</div><div class="wide"><h4>ARMY RESTRICTIONS / KEYWORDS</h4>${d.restrictions.length?`<ul>${d.restrictions.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:'<p class="muted">No additional restriction recorded in the structured source.</p>'}</div></div></article>`}
+app.addEventListener('click',e=>{const t=e.target as HTMLElement;if(t.closest('[data-back]')){selectedDetachment='';render()}});boot();
