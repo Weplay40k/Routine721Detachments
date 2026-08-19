@@ -1,1 +1,1 @@
-{"name":"routine721detachments","private":true,"version":"1.0.0","type":"module","scripts":{"build":"vite build"},"devDependencies":{"@vitejs/plugin-react":"latest","vite":"latest","typescript":"latest"}}
+{"name":"routine721detachments","private":true,"version":"1.0.0","type":"module","scripts":{"build":"node scripts/sync_11e_data.mjs && vite build"},"devDependencies":{"vite":"latest","typescript":"latest"}}
