@@ -1,11 +1,13 @@
 import './styles.css';
 
-type Stratagem = string | { name: string; cp: number };
+type Stratagem = string | { name: string; cp?: number };
+type Enhancement = string | { name: string; points?: number };
 type Detachment = {
   name: string;
   force: string;
   dp: number;
   rule: string;
+  enhancements?: Enhancement[];
   stratagems: Stratagem[];
   restrictions: string[];
 };
@@ -23,7 +25,7 @@ const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;',
 
 async function boot() {
   try {
-    const response = await fetch('./data/rules-data.json', { cache: 'no-store' });
+    const response = await fetch('./rules-data.json', { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     data = await response.json();
   } catch (error) {
@@ -53,14 +55,16 @@ function render() {
 }
 
 function dossier(d: Detachment) {
+  const enhancements = d.enhancements ?? [];
   return `<div class="back"><button data-back="1">← All detachments</button></div>
     <article><div class="top"><div><small>${esc(d.force)}</small><h3>${esc(d.name)}</h3></div><b>${d.dp} DP</b></div>
       <div class="grid">
         <div><h4>FORCE DISPOSITION</h4><p>${esc(d.force)}</p></div>
         <div><h4>DP</h4><p>${d.dp} Detachment Points</p></div>
         <div class="wide"><h4>DETACHMENT RULE</h4><p>${esc(d.rule)}</p></div>
-        <div><h4>STRATAGEMS</h4>${d.stratagems.length ? `<ul>${d.stratagems.map(s => `<li>${esc(typeof s === 'string' ? s : `${s.name} — ${s.cp}CP`)}</li>`).join('')}</ul>` : '<p class="muted">Stratagem registry pending for this detachment.</p>'}</div>
-        <div><h4>RESTRICTIONS</h4>${d.restrictions.length ? `<ul>${d.restrictions.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="muted">No additional restriction recorded.</p>'}</div>
+        <div><h4>ENHANCEMENTS + POINT COSTS</h4>${enhancements.length ? `<ul>${enhancements.map(x => `<li>${esc(typeof x === 'string' ? x : `${x.name}${x.points != null ? ` — ${x.points} pts` : ''}`)}</li>`).join('')}</ul>` : '<p class="muted">Enhancement registry pending for this detachment.</p>'}</div>
+        <div><h4>STRATAGEMS + CP COSTS</h4>${d.stratagems.length ? `<ul>${d.stratagems.map(s => `<li>${esc(typeof s === 'string' ? s : `${s.name}${s.cp != null ? ` — ${s.cp}CP` : ''}`)}</li>`).join('')}</ul>` : '<p class="muted">Stratagem registry pending for this detachment.</p>'}</div>
+        <div class="wide"><h4>ARMY RESTRICTIONS / KEYWORDS</h4>${d.restrictions.length ? `<ul>${d.restrictions.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p class="muted">No additional restriction recorded.</p>'}</div>
       </div>
     </article>`;
 }
